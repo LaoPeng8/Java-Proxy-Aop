@@ -20,6 +20,53 @@
             <artifactId>cglib</artifactId>
             <version>3.3.0</version>
         </dependency>
+
+        <!--
+            找到之前学习Spring时的笔记发现需要导入这些jar包 (发现以前的项目都是直接导入的jar包)
+            (发现引入 spring-core 后不会自动自动引入其他jar, 只好一个一个引入了)
+
+            开发spring至少需要使用的jar(5个+1个):
+            spring-aop.jar          开发AOP特性时需要的jar
+            spring-beans.jar        处理Bean的jar
+            spring-context.jar      处理spring上下文的jar
+            spring-core.jar         spring核心jar
+            spring-expression.jar   spring表达式  (EL/jstl)
+        -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>5.3.21</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>5.3.21</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>5.3.21</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>5.3.21</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-expression</artifactId>
+            <version>5.3.21</version>
+        </dependency>
+
+        <!-- 发现 没有 @Aspect , 需要引入该依赖 -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.8</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>
