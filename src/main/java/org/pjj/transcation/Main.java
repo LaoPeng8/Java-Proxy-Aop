@@ -17,7 +17,9 @@ public class Main {
 
 //        userService.transfer("Tom", "jerry", 500);//转账 (没有事务)
 
-        userService.transfer3("Tom", "jerry", 500);//转账 (有事务)
+//        userService.transfer3("Tom", "jerry", 500);//转账 (有事务)
+
+        userService.transfer4("Tom", "jerry", 500);//转账 (基于aspectj的声明式事务)
 
     }
 }

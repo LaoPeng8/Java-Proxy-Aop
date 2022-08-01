@@ -16,8 +16,8 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-    @Autowired
-    private TransactionTemplate transactionTemplate;//编程式事务管理
+//    @Autowired
+//    private TransactionTemplate transactionTemplate;//编程式事务管理
 
     /**
      * 没有事务的转账业务
@@ -54,15 +54,31 @@ public class UserService {
      * @param toName
      * @param money
      */
-    public void transfer3(String fromName, String toName, Integer money) {
-        transactionTemplate.execute(status -> {//开启事务
-            userDao.out(fromName, money);//转出钱
-            if(true) {
-                throw new RuntimeException("出错了!!!");
-            }
-            userDao.in(toName,money);//转入钱
-            return null;
-        });
+//    public void transfer3(String fromName, String toName, Integer money) {
+//        transactionTemplate.execute(status -> {//开启事务
+//            userDao.out(fromName, money);//转出钱
+//            if(true) {
+//                throw new RuntimeException("出错了!!!");
+//            }
+//            userDao.in(toName,money);//转入钱
+//            return null;
+//        });
+//    }
+
+    /**
+     * 表面上看没有事务, 没有@Transactional, 没有transactionTemplate.execute
+     * 但实际在xml中通过aspectj给该方法加入了事务.
+     *
+     * @param fromName
+     * @param toName
+     * @param money
+     */
+    public void transfer4(String fromName, String toName, Integer money) {
+        userDao.out(fromName, money);//转出钱
+        if(true) {
+            throw new RuntimeException("出错了!!!");
+        }
+        userDao.in(toName,money);//转入钱
     }
 
 

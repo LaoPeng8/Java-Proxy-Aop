@@ -28,13 +28,46 @@
     </bean>
 
     <!-- 启用基于注解的声明式事务管理配置 -->
-    <tx:annotation-driven transaction-manager="transactionManager" />
+<!--    <tx:annotation-driven transaction-manager="transactionManager" />-->
 
     <!-- 启动基于 编程式 的事务管理配置 -->
-    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
-        <property name="transactionManager" ref="transactionManager" />
-    </bean>
+<!--    <bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">-->
+<!--        <property name="transactionManager" ref="transactionManager" />-->
+<!--    </bean>-->
 
+    <!-- 基于 aspectj 声明式事务配置方式 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <!-- 增强(事务)的属性配置 -->
+        <tx:attributes>
+            <!--
+                tx:method：给哪些方法配置事务属性（method可以有多个，分别给不同方法配置事务属性）
+                name：方法名称（1、完整方法名，不带路径   2、可以使用通配符*）
 
+                ...根据不同的前缀通配所有需要开启事务的业务方法
+                <tx:method name="add*" propagation="REQUIRED" isolation="DEFAULT" timeout="-1"/>
+                <tx:method name="*" propagation="REQUIRED" isolation="DEFAULT" timeout="-1"/>
+                其中配置完整方法名优先级最高，其次是带前缀的通配，最次全匹配*
+
+                isolation: DEFAULT事务的隔离级别
+                propagation: 事务的传播行为
+                read-only: false 不是只读
+                timeout: -1
+                no-rollback-for: 发生哪些异常不回滚
+                rollback-for: 发生哪些异常回滚事务
+            -->
+            <tx:method name="transfer4" isolation="DEFAULT" propagation="REQUIRED" />
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- aop配置定义切面和切点信息 -->
+    <aop:config>
+        <!-- 定义切点 (这里定义切点实际是可以将需要开启事务得包中所有方法概括进去,
+        实际真正需要事务得方法是 上面 <tx:method name="transfer4" 这里定义得) -->
+        <aop:pointcut id="mypointcut" expression="execution(* org.pjj.transcation.service.UserService.*(..))"/>
+        <!-- 定义切面 -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="mypointcut"/>
+    </aop:config>
+    <!-- 经过 tx:advice 与 aop:config 那么我的理解是 相当于 在需要事务的方法处通过aop将 事务加入,
+     简单的来说通过动态代理 代理 原有方法并加入 事务, 避免了 编程式事务 需要在每个方法中都手动使用 transactionTemplate.execute({})-->
 
 </beans>
