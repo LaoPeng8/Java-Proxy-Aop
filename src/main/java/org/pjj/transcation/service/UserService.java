@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionTemplate;
 
 /**
+ * 测试 编程式事务, 声明式事务, 注解式事务
  * @author PengJiaJun
  * @Date 2022/08/01 19:23
  */
