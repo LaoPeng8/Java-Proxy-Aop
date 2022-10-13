@@ -18,7 +18,7 @@ public class QuickSort {
 
     public static void main(String[] args) {
         int[] arr = {5,7,6,9,3,10,2,11};
-        quick2(arr, 0, arr.length - 1);
+        quick3(arr, 0, arr.length - 1);
         System.out.println(Arrays.toString(arr));
     }
 
@@ -117,4 +117,33 @@ public class QuickSort {
         quick2(arr, low + 1, right);
 
     }
+
+
+    public static void quick3(int[] arr, int left, int right) {
+
+        if(left >= right) {
+            return;
+        }
+
+        int low = left;
+        int high = right;
+        int pivot = arr[left];
+
+        while(low < high) {
+            while(low < high && arr[high] >= pivot) {
+                high--;
+            }
+            arr[low] = arr[high];
+
+            while(low < high && arr[low] <= pivot) {
+                low++;
+            }
+            arr[high] = arr[low];
+        }
+        arr[low] = pivot;
+
+        quick3(arr, left, low);
+        quick3(arr, low + 1, right);
+    }
+
 }

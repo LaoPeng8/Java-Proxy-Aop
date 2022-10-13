@@ -34,7 +34,7 @@ public class ShellSort {
 
     public static void main(String[] args) {
         int[] arr = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
-        shell2(arr);
+        shell3(arr);
         System.out.println(Arrays.toString(arr));
     }
 
@@ -81,5 +81,21 @@ public class ShellSort {
 
         }
 
+    }
+
+    public static void shell3(int[] arr) {
+        for(int step = arr.length / 2; step >= 1; step = step / 2) {
+            for(int i = step; i < arr.length; i++) {
+                int insertValue = arr[i];
+                int insertIndex = i - step;
+
+                while(insertIndex >=0 && insertValue < arr[insertIndex]) {
+                    arr[insertIndex + step] = arr[insertIndex];
+                    insertIndex = insertIndex - step;
+                }
+                arr[insertIndex + step] = insertValue;
+
+            }
+        }
     }
 }

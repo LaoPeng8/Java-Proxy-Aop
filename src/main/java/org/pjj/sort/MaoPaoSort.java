@@ -9,7 +9,7 @@ import java.util.Arrays;
  */
 public class MaoPaoSort {
     public static void main(String[] args) {
-        int[] arr = {5,7,6,9,3,10,2,11};
+        int[] arr = {-100,5,7,6,9,3,10,2,11};
         maopao(arr);
         System.out.println(Arrays.toString(arr));//[2, 3, 5, 6, 7, 9, 10, 11]
     }
@@ -35,6 +35,27 @@ public class MaoPaoSort {
 
             //但凡发生过一次 两两交换, flag都为true, 则表示需要继续排序
             //如果 flag = false;表示一次两两交换都没发生, 表示已经有序了, 不需要继续排序了
+            if(!flag) {
+                break;
+            }
+        }
+    }
+
+    public static void maopao2(int[] arr) {
+        for(int i = 0; i < arr.length - 1; i++) {
+            boolean flag = false;
+            for(int j = 0; j < arr.length - 1 - i; j++) {
+                int temp = -1;
+                if(arr[j] > arr[j + 1]) {
+                    temp = arr[j + 1];
+                    arr[j + 1] = arr[j];
+                    arr[j] = temp;
+
+                    flag = true;
+                }
+            }
+
+            //如果一次两两交换都没有进行, 说明数组已经有序, 就可以结束排序了
             if(!flag) {
                 break;
             }

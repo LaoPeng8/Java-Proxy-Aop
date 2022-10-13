@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class SelectSort {
     public static void main(String[] args) {
         int[] arr = {5,7,6,9,3,10,2,11};
-        select2(arr);
+        select3(arr);
         System.out.println(Arrays.toString(arr));//[2, 3, 5, 6, 7, 9, 10, 11]
     }
 
@@ -68,6 +68,28 @@ public class SelectSort {
                 arr[i] = min;
                 arr[jIndex] = temp;
             }
+        }
+    }
+
+
+    public static void select3(int[] arr) {
+        for(int i=0; i < arr.length; i++) {
+            int min = arr[i];
+            int jIndex = -1;
+            for(int j=i+1; j < arr.length; j++) {
+
+                if(min > arr[j]) {
+                    min = arr[j];
+                    jIndex = j;
+                }
+            }
+
+            if(jIndex != -1) {
+                int temp = arr[i];
+                arr[i] = min;
+                arr[jIndex] = temp;
+            }
+
         }
     }
 

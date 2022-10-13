@@ -13,7 +13,7 @@ import java.util.Arrays;
 public class InsertSort {
     public static void main(String[] args) {
         int[] arr = {5,7,6,9,3,10,2,11};
-        insert2(arr);
+        insert3(arr);
         System.out.println(Arrays.toString(arr));
     }
 
@@ -61,6 +61,19 @@ public class InsertSort {
             //当while退出后,两种情况
             //1. insertValue < arr[insertIndex], 不满足了, 说明 insertValue第一次 > arr[insertIndex], 说明insertValue应该插入 insertIndex的后面 (insertIndex + 1就是 insertIndex的后面)
             //2. insertIndex >= 0, 不满足了, 说明 insertValue = -1了, insertValue还是 < arr[insertIndex], 说明insertValue是最小的, 应该插入第一个位置 (-1 + 1 就是第一个位置)
+            arr[insertIndex + 1] = insertValue;
+        }
+    }
+
+    public static void insert3(int[] arr) {
+        for(int i = 1; i < arr.length; i++) {
+            int insertValue = arr[i];//无序列表第一个, 也就是待插入元素
+            int insertIndex = i - 1;//有序列表最后一个
+
+            while(insertIndex >= 0 && insertValue < arr[insertIndex]) {
+                arr[insertIndex + 1] = arr[insertIndex];
+                insertIndex--;
+            }
             arr[insertIndex + 1] = insertValue;
         }
     }
