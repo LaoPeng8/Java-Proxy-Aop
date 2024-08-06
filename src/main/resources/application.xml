@@ -55,7 +55,7 @@
                 no-rollback-for: 发生哪些异常不回滚
                 rollback-for: 发生哪些异常回滚事务
             -->
-            <tx:method name="transfer4" isolation="DEFAULT" propagation="REQUIRED" />
+            <tx:method name="transfer*" isolation="DEFAULT" propagation="REQUIRED" />
         </tx:attributes>
     </tx:advice>
 

@@ -16,6 +16,6 @@ public class Main {
 
         UserService userInterface = (UserService) cglibHandler.getProxy();//得到代理对象
 
-        userInterface.test();//执行的test方法就有了, 代理的前后逻辑增强
+        userInterface.test2();//执行的test方法就有了, 代理的前后逻辑增强
     }
 }

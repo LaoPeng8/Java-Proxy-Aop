@@ -76,6 +76,12 @@ public class CglibHandler implements MethodInterceptor {
             System.out.println("方法执行后的代理逻辑");
         }
 
+        if(method.getName().equals("test2")) {
+            System.out.println("方法执行前的代理逻辑");
+            res = methodProxy.invoke(target, objects);//调用目标方法 (真正需要执行的方法)
+            System.out.println("方法执行后的代理逻辑");
+        }
+
         return res;
     }
 }
