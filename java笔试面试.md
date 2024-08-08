@@ -299,9 +299,45 @@ public class Test {
 <span style="color: red">final可以修饰类和属性和方法，都表示不可再修改。final类不可继承，属性不可更改值，方法不可重写。</span><br/>
 ![45.final关键字.png](./img/exam/45.final关键字.png)
 
-### 46.接口抽象类.png
+### 46.接口抽象类
 <span style="color: red">AD, A抽象类中是可以什么都没有的, D之前说过接口中可以有static方法和default方法(1.8及以后)</span><br/>
 ![46.接口抽象类.png](./img/exam/46.接口抽象类.png)
+
+### 47.接口定义常量
+<span style="color: red">ABCD, 以下方式都是可以的, public static final 这三关键字, 在接口中定义变量(常量)时, 写或不写其中某一个或全部, 都是可以的, 都是默认public static final. 如果你不指明int这种类或者不给常量初始化赋值才会报错</span><br/>
+<span style="color: red"></span><br/>
+![47.接口定义常量.png](./img/exam/47.接口定义常量.png)
+
+### 48.构造方法
+<span style="color: red">一眼D, A错, 类拥有默认的构造方法(这并不需要显示定义), B错, 构造方法没有返回值, C构造方法可以重载, 所以必须可以携带参数</span><br/>
+![48.构造方法.png](./img/exam/48.构造方法.png)
+
+### 49.构造方法
+<span style="color: red">一眼C, 因为那不是一个构造方法, 那只是一个普通的名字和类名一样的, 返回值为void的实例方法</span><br/>
+![49.构造方法.png](./img/exam/49.构造方法.png)
+
+### 50.构造方法
+![50.构造方法.png](./img/exam/50.构造方法.png)
+
+### 51.private和重载.png
+<span style="color: red">D, i在父类中定义为private, 子类不能访问, 通过super.i也不行, super是区分子类和父类同名的实例变量</span><br/>
+<span style="color: red">public ：公共权限，可以被任意类访问，不同包不同类依然可以访问</span><br/>
+<span style="color: red">protected：受保护的权限，可以被同包类访问，如果不是同包类，必须是该类的子类才可以访问</span><br/>
+<span style="color: red">default：默认的(无)，同包权限，只能被同包的类访问</span><br/>
+<span style="color: red">private：私有权限，只能在本类中访问，同包其他类也不能访问</span><br/>
+![51.private和重载.png](./img/exam/51.private和重载.png)
+
+### 
+<span style="color: red"></span><br/>
+![](./img/exam/)
+
+### 
+<span style="color: red"></span><br/>
+![](./img/exam/)
+
+### 
+<span style="color: red"></span><br/>
+![](./img/exam/)
 
 ### 
 <span style="color: red"></span><br/>
