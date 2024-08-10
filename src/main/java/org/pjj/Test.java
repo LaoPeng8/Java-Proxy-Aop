@@ -9,24 +9,36 @@ import java.util.List;
  * @Date 2024/08/06 17:01
  */
 public class Test {
-
-    public static void hello() {
-        System.out.println("hello");
+    int i = qotJ();
+    int j = 0;
+    public int qotJ() {
+        j = 10;
+        System.out.println(i);
+        return j;
     }
 
     public static void main(String[] args) {
-        Test test = new Test();
-        test.hello();
-
-        Animal animal = new Animal() {
-            @Override
-            public void say() {
-
-            }
-        };
+        String str = "aa.bb.cc";
+        System.out.println(Arrays.toString(str.split("\\    .")));
     }
 }
 
-abstract class Animal {
-    public abstract void say();
+abstract class A {
+    abstract void a1();
+
+    void a2() {
+    }
+}
+
+class B extends A {
+    void a1() {
+    }
+
+    void a2() {
+    }
+}
+
+class C extends B {
+    void c1() {
+    }
 }
